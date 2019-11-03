@@ -1,17 +1,144 @@
-<soho-icons-ext></soho-icons-ext>
+
 
 <soho-icons></soho-icons>
 <soho-icons-uplift></soho-icons-uplift>
+<!-- <nav id="application-menu" class="application-menu is-open" style="height: 100%;">
 
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+        <div class="accordion panel inverse has-icons" data-options="{'allowOnePane': true}">
+    
+          <div class="accordion-header is-expanded is-selected hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-home"></use>
+            </svg>
+            <a href="#" aria-expanded="true"><span style="width: auto;">Item One</span></a>
+          </div>
+    
+          <div class="accordion-header hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-tools"></use>
+            </svg>
+            <a href="#"><span style="width: auto;">Item Two</span></a>
+          </div>
+    
+          <div class="accordion-header hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-columns"></use>
+            </svg>
+            <a href="#"><span style="width: auto;">Item Three</span></a>
+          </div>
+    
+          <div class="accordion-header hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-cascade"></use>
+            </svg>
+            <a href="#"><span style="width: auto;">Item Four</span></a>
+          </div>
+    
+          <div class="accordion-header hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-insert-image"></use>
+            </svg>
+            <a href="#"><span style="width: auto;">Item Five</span></a>
+          </div>
+    
+          <div class="accordion-header hide-focus">
+            <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+              <use xlink:href="#icon-ledger"></use>
+            </svg>
+            <a href="#"><span style="width: auto;">Item Six</span></a>
+          </div>
+    
+        </div>
+    
+        <div class="branding">
+          <svg class="icon" viewBox="0 0 34 34" focusable="false" aria-hidden="true" role="presentation">
+            <use xlink:href="#icon-logo"></use>
+          </svg>
+        </div>
+      </nav>
 
-  <button soho-button (click)="clicked()">{{'QuickStartButtonText' | sohoTranslate }}</button>
-  <div class="field">
-    <label for="current-date" class="label">Current Date</label>
-    <input soho-datepicker name="current-date" />
-  </div>
+    <header class="header is-personalizable">
+        <div class="toolbar">
+          <div class="title">
+           <button class="btn-icon application-menu-trigger hide-focus" type="button" tabindex="0">
+            <span class="audible">Show navigation</span>
+            <span class="icon app-header">
+              <span class="one"></span>
+              <span class="two"></span>
+              <span class="three"></span>
+            </span>
+          </button>
+      
+            <h1>Page Title</h1>
+          </div>
+      
+          <div class="buttonset">
+            <label for="header-searchfield" class="audible">Search</label>
+            <input id="header-searchfield" class="searchfield" name="header-searchfield" />
+          </div>
+      
+          <div class="more">
+            <button class="btn-actions" type="button">
+              <svg class="icon" focusable="false" aria-hidden="true" role="presentation">
+                <use xlink:href="#icon-more"></use>
+              </svg>
+              <span class="audible" data-translate="text">More</span>
+            </button>
+            <div class="popupmenu-wrapper bottom"><ul id="popupmenu-toolbar-0" class="popupmenu" role="menu"></ul><div class="arrow"></div></div>
+          </div>
+      
+        </div>
+      </header> -->
+
+ <soho-header>
+  
+    <soho-toolbar hasMoreButton="true">
+  
+      <soho-toolbar-title>
+        <button soho-nav-button>Show Navigation</button>
+       <h1>
+          <span soho-page-title>Dogs</span>
+          <span soho-section-title>Demo</span>
+        </h1>
+      </soho-toolbar-title>
+  
+      <soho-toolbar-more-button>
+        <ul class="popupmenu is-selectable">
+          <li class="heading" role="presentation">Theme</li>
+          <li class="is-selectable is-checked"><a href="#" data-theme="grey-theme">Light</a></li>
+          <li class="is-selectable"><a href="#" data-theme="dark-theme">Dark</a></li>
+          <li class="is-selectable"><a href="#" data-theme="high-contrast-theme">High Contrast</a></li>
+          <li class="is-selectable"><a href="#" data-theme="uplift-theme">Uplift</a></li>
+          <li class="separator"></li>
+          <li class="heading" role="presentation">Personalization</li>
+          <li class="is-selectable is-checked"><a data-rgbcolor="" href="#">Default</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#368AC0" href="#">Azure</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#EFA836" href="#">Amber</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#9279A6" href="#">Amethyst</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#579E95" href="#">Turqoise</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#76B051" href="#">Emerald</a></li>
+          <li class="is-selectable"><a data-rgbcolor="#5C5C5C" href="#">Graphite</a></li>
+        </ul>
+      </soho-toolbar-more-button>
+      
+  
+      </soho-toolbar>
+    </soho-header>
+  
+
+<!--<div>   
+<div class="accordion-pane">
+ <div class="accordion-header list-item"><a [routerLink]="['dashboard']"><span>Dashboard</span></a></div>
+  <div class="accordion-header list-item"><a [routerLink]="['favourites']"><span>Favourites</span></a></div>
 </div>
+</div>-->
+
+
+<a [routerLink]="['dashboard']"><h4>Dashboard</h4></a>
+<a [routerLink]="['favourites']"><h4>Favourites</h4></a>
+
+
+
+<router-outlet></router-outlet>
+
+
