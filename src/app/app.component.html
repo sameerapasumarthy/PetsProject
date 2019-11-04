@@ -1,7 +1,7 @@
 
 
-<soho-icons></soho-icons>
-<soho-icons-uplift></soho-icons-uplift>
+<!--<soho-icons></soho-icons>
+<soho-icons-uplift></soho-icons-uplift>-->
 <!-- <nav id="application-menu" class="application-menu is-open" style="height: 100%;">
 
         <div class="accordion panel inverse has-icons" data-options="{'allowOnePane': true}">
@@ -90,41 +90,7 @@
         </div>
       </header> -->
 
- <soho-header>
-  
-    <soho-toolbar hasMoreButton="true">
-  
-      <soho-toolbar-title>
-        <button soho-nav-button>Show Navigation</button>
-       <h1>
-          <span soho-page-title>Dogs</span>
-          <span soho-section-title>Demo</span>
-        </h1>
-      </soho-toolbar-title>
-  
-      <soho-toolbar-more-button>
-        <ul class="popupmenu is-selectable">
-          <li class="heading" role="presentation">Theme</li>
-          <li class="is-selectable is-checked"><a href="#" data-theme="grey-theme">Light</a></li>
-          <li class="is-selectable"><a href="#" data-theme="dark-theme">Dark</a></li>
-          <li class="is-selectable"><a href="#" data-theme="high-contrast-theme">High Contrast</a></li>
-          <li class="is-selectable"><a href="#" data-theme="uplift-theme">Uplift</a></li>
-          <li class="separator"></li>
-          <li class="heading" role="presentation">Personalization</li>
-          <li class="is-selectable is-checked"><a data-rgbcolor="" href="#">Default</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#368AC0" href="#">Azure</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#EFA836" href="#">Amber</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#9279A6" href="#">Amethyst</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#579E95" href="#">Turqoise</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#76B051" href="#">Emerald</a></li>
-          <li class="is-selectable"><a data-rgbcolor="#5C5C5C" href="#">Graphite</a></li>
-        </ul>
-      </soho-toolbar-more-button>
-      
-  
-      </soho-toolbar>
-    </soho-header>
-  
+
 
 <!--<div>   
 <div class="accordion-pane">
@@ -133,12 +99,53 @@
 </div>
 </div>-->
 
+<!--<soho-header>
+  
+  <soho-toolbar hasMoreButton="true">
+
+    <soho-toolbar-title>
+      <button soho-nav-button>Show Navigation</button>
+     <h1>
+        <span soho-page-title>Dogs</span>
+        <span soho-section-title>Demo</span>
+      </h1>
+    </soho-toolbar-title>
+
+    
+    
+
+    </soho-toolbar>
+  </soho-header>
 
 <a [routerLink]="['dashboard']"><h4>Dashboard</h4></a>
 <a [routerLink]="['favourites']"><h4>Favourites</h4></a>
 
 
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet>-->
+
+
+<a href="#maincontent" class="skip-link" data-translate="text">SkipToMain</a>
+
+<soho-icons *ngIf="!useUpliftIcons"></soho-icons>
+<soho-icons-uplift *ngIf="useUpliftIcons"></soho-icons-uplift>
+
+
+
+<nav soho-application-menu class="is-personalizable" [filterable]="true" [openOnLarge]="false"
+  [dismissOnClickMobile]="true" (menuVisibility)="onMenuVisibility($event)">
+    <div soho-searchfield-wrapper>
+    <label class="audible" for="application-menu-searchfield">Search</label>
+    <input soho-searchfield id="application-menu-searchfield" [clearable]="true" />
+  </div>
+  <app-menu></app-menu>
+</nav>
+<div class="page-container no-scroll">
+  <app-header></app-header>
+  <div id="maincontent" class="page-container scrollable" role="main">
+      <router-outlet></router-outlet>
+  </div>
+</div>
+<div soho-personalize (changetheme)="onChangeTheme($event)"></div>
 
 

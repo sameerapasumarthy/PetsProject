@@ -14,13 +14,17 @@ import { DogsService } from './dogs.service';
 
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { HeaderComponent } from './header/header.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardcompComponent,
-    FavouritescompComponent
+    FavouritescompComponent,
+    HeaderComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
