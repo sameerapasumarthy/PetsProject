@@ -8,8 +8,6 @@ import { IDog } from '../Dog';
   styleUrls: ['./dashboardcomp.component.css']
 })
 export class DashboardcompComponent implements OnInit {
-
-  i:number;
   dog:IDog;
   dogs:IDog[]=[];
   breed:string="golden retriever";
@@ -18,8 +16,7 @@ export class DashboardcompComponent implements OnInit {
   constructor(private dogserviceinstance:DogsService) { }
 
   ngOnInit() {
-
-    for(this.i=1;this.i<=10;this.i++)
+  for(let i=1;i<=10;i++)
     {
       this.dogserviceinstance.getDog().subscribe(data=>{
                                                       this.dog=data;

@@ -5,24 +5,17 @@ import { SohoComponentsModule } from 'ids-enterprise-ng';
 
 import { AppComponent } from './app.component';
 import { SohoLocaleInitializerModule } from './locale/soho-locale-initializer.module';
-import { DashboardcompComponent } from './dashboardcomp/dashboardcomp.component';
-import { FavouritescompComponent } from './favouritescomp/favouritescomp.component';
-
 import { HttpClientModule } from '@angular/common/http';
 import { DogsService } from './dogs.service';
-
-
-
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
+import { HomeModule } from './home/home.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardcompComponent,
-    FavouritescompComponent,
     HeaderComponent,
     MenuComponent
   ],
@@ -31,7 +24,8 @@ import { MenuComponent } from './menu/menu.component';
     SohoComponentsModule,
     SohoLocaleInitializerModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HomeModule
   ],
   providers: [DogsService],
   bootstrap: [AppComponent]

@@ -1,22 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardcompComponent } from '../dashboardcomp/dashboardcomp.component';
-import { FavouritescompComponent } from '../favouritescomp/favouritescomp.component';
+import { HomeComponent } from '../home/home.component';
 
 const routes: Routes = [
   {
-      path: 'dashboard',
-      component: DashboardcompComponent
+      path: '',
+      component: HomeComponent
   },
   {
-        path: 'favourites',
-        component: FavouritescompComponent,
-    }
+      path:'home',
+      loadChildren:'../home/home.module#HomeModule'
+  }
 ];
-
-
-
 @NgModule({
   declarations: [],
   imports: [

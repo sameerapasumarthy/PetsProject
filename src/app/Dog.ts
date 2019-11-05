@@ -5,7 +5,4 @@ export interface IDog
     name?:string;
     breed?:string;
     desc?:string;
-
-
-
 }
