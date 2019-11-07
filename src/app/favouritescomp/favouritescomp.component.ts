@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Select } from '@ngxs/store';
+import { DogState } from '../store/dog.state';
+import { Observable } from 'rxjs';
+import { IDog } from '../Dog';
 
 @Component({
   selector: 'app-favouritescomp',
@@ -8,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class FavouritescompComponent implements OnInit {
 
   constructor() { }
+
+  @Select(DogState.getFavouriteDogs) favouritedogs$: Observable<IDog[]>;
 
   ngOnInit() {
   }

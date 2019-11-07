@@ -11,7 +11,10 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeModule } from './home/home.module';
-
+import { NgxsModule } from '@ngxs/store';
+import { DogState } from './store/dog.state';
+import { environment } from 'src/environments/environment';
+//
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HomeModule } from './home/home.module';
     SohoLocaleInitializerModule,
     AppRoutingModule,
     HttpClientModule,
-    HomeModule
+    HomeModule,
+    NgxsModule.forRoot([DogState], {
+      developmentMode: !environment.production // important to make sure ngxs freezes state to prevent mutable changes to state
+    }),
   ],
   providers: [DogsService],
   bootstrap: [AppComponent]
