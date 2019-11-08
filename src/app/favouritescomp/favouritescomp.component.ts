@@ -3,6 +3,7 @@ import { Select } from '@ngxs/store';
 import { DogState } from '../store/dog.state';
 import { Observable } from 'rxjs';
 import { IDog } from '../Dog';
+import { FavouritesService } from '../favourites.service';
 
 @Component({
   selector: 'app-favouritescomp',
@@ -11,11 +12,17 @@ import { IDog } from '../Dog';
 })
 export class FavouritescompComponent implements OnInit {
 
-  constructor() { }
+  constructor(public favouriteserviceinstance: FavouritesService) { }
+
+  favdogs: IDog[];
 
   @Select(DogState.getFavouriteDogs) favouritedogs$: Observable<IDog[]>;
 
   ngOnInit() {
+
+    //this.favdogs=JSON.parse(localStorage.getItem("favouritedogs"));
+    this.favouriteserviceinstance.getFavouriteDogs()
+
   }
 
 }

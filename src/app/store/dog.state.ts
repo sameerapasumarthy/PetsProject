@@ -1,55 +1,63 @@
 import { IDog } from '../Dog';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { pushdog, pushToFavourites } from './dog.action';
-export class DogStateModel
-{
-    dogs:IDog[];
+import { PushDog, PushToFavourites, EmptyStore, EmptyFavourites } from './dog.action';
+export class DogStateModel {
+    dogs: IDog[];
 
-    favouritedogs:IDog[];
+    favouritedogs: IDog[];
 }
 
 @State<DogStateModel>(
     {
-        name:"dogs",
-        defaults:{
-            dogs:[],
-            favouritedogs:[]
+        name: "dogs",
+        defaults: {
+            dogs: [],
+            favouritedogs: []
         }
     }
 )
 
-export class DogState{
-        constructor(){}
+export class DogState {
+    constructor() { }
+    @Selector()
+    static getDogs(state: DogStateModel): IDog[] {
+        return state.dogs;
+    }
 
+    @Selector()
+    static getFavouriteDogs(state: DogStateModel): IDog[] {
+        return state.favouritedogs;
+    }
 
+    @Action(PushDog)
+    addDog(cntx: StateContext<DogStateModel>, { payload }: PushDog) {
+        const state = cntx.getState();
+        cntx.patchState({
+            dogs: [...state.dogs, payload]
+        });
+    }
 
-        @Selector()
-         static getDogs(state:DogStateModel):IDog[]
-        {
-                return state.dogs;
-        }
+    @Action(PushToFavourites)
+    addTofavourites(cntx: StateContext<DogStateModel>, { payload }: PushToFavourites) {
+        const state = cntx.getState();
+        cntx.patchState({
+            favouritedogs: [...state.favouritedogs, payload]
+        });
+    }
 
-        @Selector()
-        static getFavouriteDogs(state:DogStateModel):IDog[]
-        {
-            return state.favouritedogs;
-        }
+    @Action(EmptyStore)
+    emptyTheStore(cntx: StateContext<DogStateModel>) {
+        const state = cntx.getState();
+        cntx.patchState({
+            dogs: []
+        })
+    }
 
-        @Action(pushdog)
-        addDog(cntx:StateContext<DogStateModel>,{ payload }:pushdog)
-        {
-            const state=cntx.getState();
-            cntx.patchState({
-                dogs:[...state.dogs,payload]
-                 });
-        }
-
-        @Action(pushToFavourites)
-        addTofavourites(cntx:StateContext<DogStateModel>,{ payload }:pushToFavourites)
-        {
-            const state=cntx.getState();
-            cntx.patchState({
-                dogs:[...state.favouritedogs,payload]
-                 });
-        }
+    @Action(EmptyFavourites)
+    emptyTheFavourites(cntx: StateContext<DogStateModel>) {
+        const state = cntx.getState();
+        cntx.patchState({
+            favouritedogs: []
+        })
+    }
 }

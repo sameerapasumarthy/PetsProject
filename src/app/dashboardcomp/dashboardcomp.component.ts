@@ -4,7 +4,8 @@ import { IDog } from '../Dog';
 import { Select, Store } from '@ngxs/store';
 import { DogState } from '../store/dog.state';
 import { Observable } from 'rxjs';
-import { pushToFavourites } from '../store/dog.action';
+import { EmptyStore } from '../store/dog.action';
+//import { pushToFavourites } from '../store/dog.action';
 
 @Component({
   selector: 'app-dashboardcomp',
@@ -17,19 +18,26 @@ export class DashboardcompComponent implements OnInit {
   //breed:string="golden retriever";
   //name:string="name";
   //desc:string="description";
+  favdogs: IDog[] = [];
   @Select(DogState.getDogs) dogs$: Observable<IDog[]>;
 
-  constructor(private dogserviceinstance:DogsService,private store:Store) { }
+  constructor(private dogserviceinstance: DogsService, private store: Store) { }
 
   ngOnInit() {
-  for(let i=1;i<=10;i++)
-    {
+
+    this.store.dispatch(new EmptyStore())
+    for (let i = 1; i <= 5; i++) {
       this.dogserviceinstance.getDog();
     }
+    if (localStorage.getItem("favouritedogs") != null) {
+      this.favdogs = JSON.parse(localStorage.getItem("favouritedogs"));
+    }
   }
-  addToFavourites(dog:IDog)
-  {
-      this.store.dispatch(new pushToFavourites(dog));
+  addToFavourites(dog: IDog) {
+    //this.store.dispatch(new pushToFavourites(dog));
+
+    this.favdogs.push(dog);
+    localStorage.setItem("favouritedogs", JSON.stringify(this.favdogs))
   }
 }
 
