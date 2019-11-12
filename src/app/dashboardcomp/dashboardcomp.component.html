@@ -1,9 +1,9 @@
 <div *ngFor="let d of dogs$ | async" class="card">
-    
+
     <p>{{d.name}}</p>
     <p>{{d.breed}}</p>
     <img src="{{d.message}}" class="image" style="width:100%;height:200px">
     <p>{{d.desc}}</p>
-    
+
     <p><button (click)="addToFavourites(d)">LIKE</button></p>
 </div>

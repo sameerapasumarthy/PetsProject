@@ -25,7 +25,7 @@ export class DashboardcompComponent implements OnInit {
 
   ngOnInit() {
 
-    this.store.dispatch(new EmptyStore())
+    //this.store.dispatch(new EmptyStore())
     for (let i = 1; i <= 5; i++) {
       this.dogserviceinstance.getDog();
     }
