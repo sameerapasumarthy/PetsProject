@@ -4,7 +4,7 @@ import { IDog } from '../Dog';
 import { Select, Store } from '@ngxs/store';
 import { DogState } from '../store/dog.state';
 import { Observable } from 'rxjs';
-import { EmptyStore } from '../store/dog.action';
+import { EmptyStore, PushToFavourites } from '../store/dog.action';
 //import { pushToFavourites } from '../store/dog.action';
 
 @Component({
@@ -25,7 +25,7 @@ export class DashboardcompComponent implements OnInit {
 
   ngOnInit() {
 
-    //this.store.dispatch(new EmptyStore())
+    this.store.dispatch(new EmptyStore())
     for (let i = 1; i <= 5; i++) {
       this.dogserviceinstance.getDog();
     }
@@ -38,6 +38,9 @@ export class DashboardcompComponent implements OnInit {
 
     this.favdogs.push(dog);
     localStorage.setItem("favouritedogs", JSON.stringify(this.favdogs))
+
+    this.store.dispatch(new PushToFavourites(dog));
+
   }
 }
 

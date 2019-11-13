@@ -7,10 +7,17 @@ export class PushDog {
 }
 
 export class PushToFavourites {
-        static readonly type = "Favourite dog"
+        static readonly type ="dog liked"
 
         constructor(public favdog: IDog) { }
 }
+export class FavouriteDogs
+{
+        static readonly type = "Favourite dogs" 
+        constructor(public favdogobj: {}) { } 
+}
+
+
 export class RemoveFromFavourite
 {
         static readonly type = "Dislike dog"

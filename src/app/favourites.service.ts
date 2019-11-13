@@ -18,9 +18,7 @@ export class FavouritesService {
       this.favdogs.forEach(val => {
         this.store.dispatch(new PushToFavourites(val));
       });
-
-
-    }
+  }
   }
 
 }

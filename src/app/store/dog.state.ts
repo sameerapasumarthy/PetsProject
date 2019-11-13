@@ -1,6 +1,6 @@
 import { IDog } from '../Dog';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { PushDog, PushToFavourites, EmptyStore, EmptyFavourites, RemoveFromFavourite } from './dog.action';
+import { PushDog, PushToFavourites, EmptyStore, EmptyFavourites, RemoveFromFavourite, FavouriteDogs } from './dog.action';
 import { DogsService } from '../dogs.service';
 export class DogStateModel {
     // dogs: IDog[];
@@ -60,6 +60,15 @@ export class DogState {
 
         });
     }
+
+    @Action(FavouriteDogs)
+    getFavourites(cntx: StateContext<DogStateModel>,{ favdogobj }:FavouriteDogs)
+    {
+        const state = cntx.getState();
+        
+        cntx.patchState({favouritedogs: favdogobj })
+    }
+    
 
     @Action(RemoveFromFavourite)
     removeDog(cntx: StateContext<DogStateModel>, { dog }: RemoveFromFavourite) {

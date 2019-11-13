@@ -4,7 +4,7 @@ import { DogState } from '../store/dog.state';
 import { Observable } from 'rxjs';
 import { IDog } from '../Dog';
 import { FavouritesService } from '../favourites.service';
-import { RemoveFromFavourite } from '../store/dog.action';
+import { RemoveFromFavourite, FavouriteDogs } from '../store/dog.action';
 
 @Component({
   selector: 'app-favouritescomp',
@@ -22,7 +22,24 @@ export class FavouritescompComponent implements OnInit {
   ngOnInit() {
 
     //this.favdogs=JSON.parse(localStorage.getItem("favouritedogs"));
-    this.favouriteserviceinstance.getFavouriteDogs()
+    //this.favouriteserviceinstance.getFavouriteDogs()
+    this.favdogs=JSON.parse(localStorage.getItem("favouritedogs"))
+    var obj = {}; //create the empty output object
+    //this.favdogs.forEach( function(item){ 
+    //var key = Object.keys(item)[1]; //take the first key from every object in the array
+    //console.log(key)
+    //obj[ key ] = item  //assign the key and value to output obj
+  //});
+  for(let i=0;i<this.favdogs.length;i++)
+  {
+    var key = Object.keys(this.favdogs[i])[0];
+   
+    obj[ this.favdogs[i][key]] = this.favdogs[i]
+    
+  }
+console.log( obj );
+this.store.dispatch(new FavouriteDogs(obj))
+
   }
 
   removeFromFavourites(dog: IDog) {

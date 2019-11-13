@@ -4,10 +4,7 @@ export interface IDog {
     name?: string;
     breed?: string;
     desc?: string;
-    id?: number;
 }
-
-
 export const enum DogApiStatus {
     success = 'success'
 }
