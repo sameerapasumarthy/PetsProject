@@ -1,6 +1,6 @@
 import { IDog } from '../Dog';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { PushDog, PushToFavourites, EmptyStore, EmptyFavourites, RemoveFromFavourite, FavouriteDogs } from './dog.action';
+import { PushDog, PushToFavourites, EmptyStore, EmptyFavourites, RemoveFromFavourite, FavouriteDogs, editItem, editFavItem } from './dog.action';
 import { DogsService } from '../dogs.service';
 export class DogStateModel {
     // dogs: IDog[];
@@ -84,6 +84,34 @@ export class DogState {
              }
         })
     }
+
+    @Action(editItem)
+    editDogDetails(cntx: StateContext<DogStateModel>, { dog }: editItem)
+    {
+        const state = cntx.getState();
+        cntx.patchState({
+            
+            dogs: {
+                ...state.dogs,
+                [dog.message]: { ...dog }
+             }
+            
+            })
+    }
+    @Action(editFavItem)
+    editFavDogDetails(cntx: StateContext<DogStateModel>, { dog }: editFavItem)
+    {
+        const state = cntx.getState();
+        cntx.patchState({
+            
+            favouritedogs: {
+                ...state.favouritedogs,
+                [dog.message]: { ...dog }
+             }
+            
+            })
+    }
+
 
     @Action(EmptyStore)
     emptyTheStore(cntx: StateContext<DogStateModel>) {

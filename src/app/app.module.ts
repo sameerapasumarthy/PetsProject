@@ -14,6 +14,7 @@ import { HomeModule } from './home/home.module';
 import { NgxsModule } from '@ngxs/store';
 import { DogState } from './store/dog.state';
 import { environment } from 'src/environments/environment';
+
 //
 
 @NgModule({
@@ -21,6 +22,7 @@ import { environment } from 'src/environments/environment';
     AppComponent,
     HeaderComponent,
     MenuComponent
+    
   ],
   imports: [
     BrowserModule,

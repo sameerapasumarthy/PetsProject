@@ -25,7 +25,19 @@ export class RemoveFromFavourite
 }
 export class EmptyStore {
         static readonly type = "Empty the store"
+
 }
+
+export class editItem{
+        static readonly type = "Edit Dog"  
+        constructor(public dog: IDog) { }
+}
+
+export class editFavItem{
+        static readonly type = "Edit Dog"  
+        constructor(public dog: IDog) { }
+}
+
 
 export class EmptyFavourites {
         static readonly type = "Empty the Favourites"
